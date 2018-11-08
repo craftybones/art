@@ -6,23 +6,22 @@ module.exports = {
 	},
 	plugins: [
     {
-      resolve: `gatsby-transformer-json`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        typeName: 'Json',
+        path: './data'
       }
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: './repos'
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'images',
-        path: path.join(__dirname,'images')
-      }
-    }
-  ]
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
+  ],
 };
