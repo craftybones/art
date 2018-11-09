@@ -11,9 +11,6 @@ module.exports = {
         path: './data'
       }
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -24,4 +21,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
   ],
+  mapping: {
+    "MergedImagesJson.author": "MergedAuthorsJson"
+  }
 };

@@ -26,7 +26,7 @@ repos.forEach((repo)=>{
   let newImagesJson=updatePath(images,repo);
   newImagesJson=insertAuthor(newImagesJson,repo);
   console.log(JSON.stringify(newImagesJson));
-  authorsJson.push(Object.assign(config,{author:repo}));
+  authorsJson.push(Object.assign(config,{id:repo}));
   imagesJson = imagesJson.concat(newImagesJson);
 })
 
