@@ -2,17 +2,21 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Gallery from '../components/gallery';
 
-export default ({ data }) => <Gallery images={data.images} />;
+export default ({ data }) => {
+  console.log(data);
+  return <Gallery images={data.images} />;
+};
 
-export const pageQuery = graphql`
-  query {
-    images: allMergedImagesJson {
+export const query = graphql`
+  query($username: String!) {
+    images: allMergedImagesJson(filter: { username: { eq: $username } }) {
       edges {
         node {
           title
           author {
             name
           }
+          username
           avatar {
             childImageSharp {
               original {

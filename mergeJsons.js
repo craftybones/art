@@ -16,6 +16,7 @@ const updatePath = (images, author) => {
 
 const insertAuthor = (images, author, username) => {
   let additionalAuthorInfo = {
+    username: author,
     author: author,
     avatar: `../avatars/${username}.png`,
   };

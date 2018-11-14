@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 const Avatar = styled.img`
   width: 48px;
@@ -13,6 +14,7 @@ const Username = styled.h2`
   margin: 0 0 0 0;
   padding-left: 10px;
 `;
+
 const UserWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -21,7 +23,10 @@ const UserWrapper = styled.div`
 const User = props => (
   <UserWrapper>
     <Avatar src={props.avatar} />
-    <Username>{props.username}</Username>
+
+    <Link to={`/artists/${props.username}`}>
+      <Username>{props.username}</Username>
+    </Link>
   </UserWrapper>
 );
 
