@@ -1,12 +1,13 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "art",
+  "description": "thirty day art challenge site generator",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "prettify": "prettier --config .prettierrc.js --write \"{.,src,test}/**/*.js\""
+    "prettify": "prettier --config .prettierrc.js --write \"{.,src,test}/**/*.js\"",
+    "fetch_data": "node fetchRecords.js && node fetchImages.js && node fetchAvatars.js && node mapImages.js && node mapAuthors.js"
   },
   "dependencies": {
     "airtable": "^0.5.7",

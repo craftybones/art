@@ -14,7 +14,7 @@ export const query = graphql`
         node {
           title
           author {
-            name,
+            name
             username
           }
           username

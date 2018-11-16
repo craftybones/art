@@ -1,14 +1,14 @@
-const records=require('./artists.json');
-const shelljs=require('shelljs');
+const records = require('./artists.json');
+const shelljs = require('shelljs');
 
-shelljs.mkdir('-p','avatars');
-console.log("Downloading avatars...")
+shelljs.mkdir('-p', 'avatars');
+console.log('Downloading avatars...');
 
-records.forEach((record)=>{
+records.forEach(record => {
   let artistId = record.id;
-  let {Avatar} = record.fields;
-  Avatar.forEach((img)=>{
-    console.log("...",artistId,img.url);
+  let { Avatar } = record.fields;
+  Avatar.forEach(img => {
+    console.log('...', artistId, img.url);
     shelljs.exec(`curl -s ${img.url} > avatars/${artistId}.png`);
-  })
-})
+  });
+});

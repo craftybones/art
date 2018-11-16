@@ -55,7 +55,11 @@ const Card = props => {
   return (
     <CardContainer>
       <Header>
-        <User avatar={avatar} name={props.node.author.name} username={props.node.author.username} />
+        <User
+          avatar={avatar}
+          name={props.node.author.name}
+          username={props.node.author.username}
+        />
         <div>
           <TimeAgo>4d</TimeAgo>
         </div>

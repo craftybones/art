@@ -11,7 +11,7 @@ export const pageQuery = graphql`
         node {
           title
           author {
-            name,
+            name
             username
           }
           avatar {
