@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "10.2"
+sudo: enabled
+install:
+  - npm install --global gatsby-cli
+  - npm install
+  - npm run fetch_data
+script:
+  - gatsby build
