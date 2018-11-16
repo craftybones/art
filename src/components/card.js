@@ -23,9 +23,8 @@ const UserWrapper = styled.div`
 const User = props => (
   <UserWrapper>
     <Avatar src={props.avatar} />
-
     <Link to={`/artists/${props.username}`}>
-      <Username>{props.username}</Username>
+      <Username>{props.name}</Username>
     </Link>
   </UserWrapper>
 );
@@ -56,7 +55,7 @@ const Card = props => {
   return (
     <CardContainer>
       <Header>
-        <User avatar={avatar} username={props.node.author.name} />
+        <User avatar={avatar} name={props.node.author.name} username={props.node.author.username} />
         <div>
           <TimeAgo>4d</TimeAgo>
         </div>
