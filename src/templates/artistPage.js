@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Gallery from '../components/gallery';
 
 export default ({ data }) => {
-  console.log(data);
   return <Gallery images={data.images} />;
 };
 
