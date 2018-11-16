@@ -4,8 +4,8 @@ node_js:
   - "10.2"
 sudo: enabled
 before_install:
-  - apt-get update
-  - apt-get install nasm
+  - sudo apt-get update
+  - sudo apt-get install nasm
 install:
   - npm install --global gatsby-cli
   - npm install
