@@ -2,8 +2,9 @@ const path = require(`path`);
 
 module.exports = {
   siteMetadata: {
-    title: 'boo',
+    title: 'Art',
   },
+  pathPrefix: '/art',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
