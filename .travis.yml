@@ -17,6 +17,8 @@ deploy:
   repo: $GITHUB_PAGES_REPO
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
+  local-dir: ./public
   on:
     branch: master
+  target-branch: master  
   verbose: true
