@@ -18,7 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
           allMergedImagesJson {
-            group(field:tags) {
+            group(field: tags) {
               fieldValue
             }
           }
@@ -31,13 +31,13 @@ exports.createPages = ({ graphql, actions }) => {
             context: { username: node.id },
           });
         });
-        result.data.allMergedImagesJson.group.forEach(({fieldValue}) => {
+        result.data.allMergedImagesJson.group.forEach(({ fieldValue }) => {
           createPage({
             path: `/tagged/${fieldValue}`,
             component: tagTemplate,
             context: { tag: fieldValue },
           });
-        })
+        });
         resolve();
       })
     );

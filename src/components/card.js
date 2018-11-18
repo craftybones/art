@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 
 const Avatar = styled.img`
   width: 48px;
@@ -70,3 +70,28 @@ const Card = props => {
 };
 
 export default Card;
+
+export const query = graphql`
+  fragment GalleryPosts on MergedImagesJson {
+    title
+    author {
+      name
+      username
+    }
+    username
+    avatar {
+      childImageSharp {
+        original {
+          src
+        }
+      }
+    }
+    image {
+      childImageSharp {
+        fluid(maxWidth: 300, traceSVG: { blackOnWhite: false }) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;

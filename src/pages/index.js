@@ -9,25 +9,7 @@ export const pageQuery = graphql`
     images: allMergedImagesJson {
       edges {
         node {
-          title
-          author {
-            name
-            username
-          }
-          avatar {
-            childImageSharp {
-              original {
-                src
-              }
-            }
-          }
-          image {
-            childImageSharp {
-              fluid(maxWidth: 300, traceSVG: { blackOnWhite: false }) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
+          ...GalleryPosts
         }
       }
     }
