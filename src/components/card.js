@@ -29,8 +29,8 @@ const User = props => (
   </UserWrapper>
 );
 
-const TimeAgo = styled.h4`
-  margin: 0 0 0 0;
+const TimeAgo = styled.div`
+  font-size: 14px;
 `;
 
 const Header = styled.div`
@@ -43,10 +43,41 @@ const Header = styled.div`
   margin-bottom: 5px;
 `;
 
+const ImageContainer = styled.div`
+  height: 240px;
+`;
+
+const Footer = styled.div`
+  font-size: 14px;
+`;
+
 const CardContainer = styled.div`
   width: 300px;
-  height: 300px;
   border: 1px solid lightgray;
+`;
+
+const Tags = props => {
+  const prependHash = t => `#${t}`;
+  const prependTaggedPath = t => `/tagged/${t}`;
+  const tagId = (t, i) => `${t}_${i}`;
+  let hashTags = props.tags.slice(0, 3).map((t, i) => (
+    <Link to={prependTaggedPath(t)} key={tagId(t, i)}>
+      {' '}
+      {prependHash(t)}{' '}
+    </Link>
+  ));
+  return <div className={props.className}>{hashTags}</div>;
+};
+
+const StyledTags = styled(Tags)`
+  & > a {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
 `;
 
 const Card = props => {
@@ -64,7 +95,12 @@ const Card = props => {
           <TimeAgo>4d</TimeAgo>
         </div>
       </Header>
-      <Img fluid={fluid} />
+      <ImageContainer>
+        <Img fluid={fluid} />
+      </ImageContainer>
+      <Footer>
+        <StyledTags tags={props.node.tags} />
+      </Footer>
     </CardContainer>
   );
 };
@@ -73,11 +109,13 @@ export default Card;
 
 export const query = graphql`
   fragment GalleryPosts on MergedImagesJson {
+    id
     title
     author {
       name
       username
     }
+    tags
     username
     avatar {
       childImageSharp {
