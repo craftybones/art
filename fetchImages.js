@@ -9,6 +9,8 @@ records.forEach(record => {
     let path = `repos/${Artist[0]}/images`;
     console.log('...', Artist[0], img.id, img.url);
     shelljs.mkdir('-p', path);
-    shelljs.exec(`curl -s ${img.url} > ${path}/${img.id}.jpg`);
+    shelljs.pushd(path);
+    shelljs.exec(`curl -s -O ${img.url}`);
+    shelljs.popd();
   });
 });

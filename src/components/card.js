@@ -83,7 +83,7 @@ const StyledTags = styled(Tags)`
 `;
 
 const Card = props => {
-  let fluid = props.node.image.childImageSharp.fluid;
+  let resize = props.node.image.childImageSharp.resize;
   let avatar = props.node.avatar.childImageSharp.original.src;
   return (
     <CardContainer>
@@ -99,7 +99,7 @@ const Card = props => {
       </Header>
       <ImageContainer>
         <Link to={prependImagePath(props.node.id)}>
-          <Img fluid={fluid} />
+          <img src={resize.src} />
         </Link>
       </ImageContainer>
       <Footer>
@@ -130,8 +130,9 @@ export const query = graphql`
     }
     image {
       childImageSharp {
-        fluid(maxWidth: 300, traceSVG: { blackOnWhite: false }) {
-          ...GatsbyImageSharpFluid_tracedSVG
+        resize(width: 300, height: 240, cropFocus: CENTER) {
+          width
+          src
         }
       }
     }
