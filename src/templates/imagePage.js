@@ -2,15 +2,20 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Layout from '../layouts/index';
 
 let ImageContainer = styled.div`
   width: 960px;
 `;
 
 export default props => (
-  <ImageContainer>
-    <Img fluid={props.data.images.edges[0].node.image.childImageSharp.fluid} />
-  </ImageContainer>
+  <Layout>
+    <ImageContainer>
+      <Img
+        fluid={props.data.images.edges[0].node.image.childImageSharp.fluid}
+      />
+    </ImageContainer>
+  </Layout>
 );
 
 export const query = graphql`

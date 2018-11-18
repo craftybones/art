@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { Link, graphql } from 'gatsby';
 
 const Avatar = styled.img`
@@ -99,7 +98,7 @@ const Card = props => {
       </Header>
       <ImageContainer>
         <Link to={prependImagePath(props.node.id)}>
-          <img src={resize.src} />
+          <img src={resize.src} alt={props.node.id} />
         </Link>
       </ImageContainer>
       <Footer>

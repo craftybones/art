@@ -5,13 +5,12 @@ const shelljs = require('shelljs');
 let allImages = [];
 const split = x => x.split(/\s+/);
 
-const pathTo = (artist, filename) =>
-  `../repos/${artist}/images/${filename}`;
+const pathTo = (artist, filename) => `../repos/${artist}/images/${filename}`;
 
-const imageFromUrl = (url) => {
-  let parts=url.split(/\//);
-  return parts[parts.length-1];
-}
+const imageFromUrl = url => {
+  let parts = url.split(/\//);
+  return parts[parts.length - 1];
+};
 
 records.forEach(record => {
   let { Title, Desc, Image, Tags, Artist } = record.fields;

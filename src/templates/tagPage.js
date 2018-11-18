@@ -1,9 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Gallery from '../components/gallery';
+import Layout from '../layouts/index';
 
 export default ({ data }) => {
-  return <Gallery images={data.images} />;
+  return (
+    <Layout>
+      <Gallery images={data.images} />
+    </Layout>
+  );
 };
 
 export const query = graphql`
