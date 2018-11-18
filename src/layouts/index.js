@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaHome } from 'react-icons/fa';
+import GlobalStyle from '../components/globalStyle';
 
 let Header = styled.header`
   width: 960px;
@@ -23,6 +24,7 @@ let BodyDiv = styled.div`
 export default props => {
   return (
     <div>
+      <GlobalStyle/>
       <Header>
         <a href="/">
           <FaHome />

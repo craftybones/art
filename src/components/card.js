@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
+import Moment from 'react-moment';
 
 const Avatar = styled.img`
   width: 20px;
@@ -36,8 +37,12 @@ const User = props => (
   </StyledLink>
 );
 
-const TimeAgo = styled.div`
-  font-size: 14px;
+const TimeContainer = props => {
+  return <Moment className={props.className} fromNow>{props.time}</Moment>
+}
+
+const TimeAgo = styled(TimeContainer)`
+  font-size: 12px;
 `;
 
 const Header = styled.div`
@@ -55,6 +60,7 @@ const ImageContainer = styled.div`
 `;
 
 const Footer = styled.div`
+  border-top: 1px solid lightgray;
   font-size: 14px;
   font-weight: 300;
   padding: 10px;
@@ -73,8 +79,7 @@ const prependImagePath = t => `/images/${t}`;
 const Tags = props => {
   let hashTags = props.tags.slice(0, 3).map((t, i) => (
     <StyledLink to={prependTaggedPath(t)} key={tagId(t, i)}>
-      {' '}
-      {prependHash(t)}{' '}
+      {prependHash(t)}
     </StyledLink>
   ));
   return <div className={props.className}>{hashTags}</div>;
@@ -82,7 +87,7 @@ const Tags = props => {
 
 const StyledTags = styled(Tags)`
   & > a {
-    margin-right: 5px;
+    margin-right: 10px;
   }
 
   &:last-child {
@@ -101,9 +106,7 @@ const Card = props => {
           name={props.node.author.name}
           username={props.node.author.username}
         />
-        <div>
-          <TimeAgo>4d</TimeAgo>
-        </div>
+        <TimeAgo time={props.node.date}></TimeAgo>
       </Header>
       <ImageContainer>
         <Link to={prependImagePath(props.node.id)}>
@@ -123,6 +126,7 @@ export const query = graphql`
   fragment GalleryPosts on MergedImagesJson {
     id
     title
+    date
     author {
       name
       username
