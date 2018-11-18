@@ -56,10 +56,12 @@ const CardContainer = styled.div`
   border: 1px solid lightgray;
 `;
 
+const prependTaggedPath = t => `/tagged/${t}`;
+const tagId = (t, i) => `${t}_${i}`;
+const prependHash = t => `#${t}`;
+const prependImagePath = t => `/images/${t}`;
+
 const Tags = props => {
-  const prependHash = t => `#${t}`;
-  const prependTaggedPath = t => `/tagged/${t}`;
-  const tagId = (t, i) => `${t}_${i}`;
   let hashTags = props.tags.slice(0, 3).map((t, i) => (
     <Link to={prependTaggedPath(t)} key={tagId(t, i)}>
       {' '}
@@ -96,7 +98,9 @@ const Card = props => {
         </div>
       </Header>
       <ImageContainer>
-        <Img fluid={fluid} />
+        <Link to={prependImagePath(props.node.id)}>
+          <Img fluid={fluid} />
+        </Link>
       </ImageContainer>
       <Footer>
         <StyledTags tags={props.node.tags} />

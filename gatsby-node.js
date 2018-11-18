@@ -3,6 +3,7 @@ const path = require('path');
 exports.createPages = ({ graphql, actions }) => {
   const userTemplate = path.resolve('src/templates/artistPage.js');
   const tagTemplate = path.resolve('src/templates/tagPage.js');
+  const imageTemplate = path.resolve('src/templates/imagePage.js');
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
     resolve(
@@ -21,6 +22,11 @@ exports.createPages = ({ graphql, actions }) => {
             group(field: tags) {
               fieldValue
             }
+            edges {
+              node {
+                id
+              }
+            }
           }
         }
       `).then(result => {
@@ -36,6 +42,13 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/tagged/${fieldValue}`,
             component: tagTemplate,
             context: { tag: fieldValue },
+          });
+        });
+        result.data.allMergedImagesJson.edges.forEach(({ node }) => {
+          createPage({
+            path: `/images/${node.id}`,
+            component: imageTemplate,
+            context: { id: node.id },
           });
         });
         resolve();
