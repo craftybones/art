@@ -3,15 +3,17 @@ import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 
 const Avatar = styled.img`
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
   margin: 0;
   border-radius: 50%;
 `;
-const Username = styled.h2`
+const Username = styled.div`
   margin: 0 0 0 0;
   padding-left: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
 `;
 
 const UserWrapper = styled.div`
@@ -40,6 +42,7 @@ const Header = styled.div`
   padding-bottom: 10px;
   padding-top: 10px;
   margin-bottom: 5px;
+  padding: 10px;
 `;
 
 const ImageContainer = styled.div`
@@ -48,6 +51,8 @@ const ImageContainer = styled.div`
 
 const Footer = styled.div`
   font-size: 14px;
+  padding: 5px;
+  font-family: sans-serif;
 `;
 
 const CardContainer = styled.div`
@@ -83,7 +88,7 @@ const StyledTags = styled(Tags)`
 
 const Card = props => {
   let resize = props.node.image.childImageSharp.resize;
-  let avatar = props.node.avatar.childImageSharp.original.src;
+  let avatar = props.node.avatar.childImageSharp.resize.src;
   return (
     <CardContainer>
       <Header>
@@ -122,7 +127,7 @@ export const query = graphql`
     username
     avatar {
       childImageSharp {
-        original {
+        resize(width: 20, height: 20) {
           src
         }
       }
