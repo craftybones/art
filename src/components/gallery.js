@@ -17,12 +17,22 @@ const GalleryRow = props => {
   return <Row>{cards}</Row>;
 };
 
+const GalleryContainer = styled.div`
+  & > * {
+    margin-bottom: 30px;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+`
+
 const Gallery = props => {
   let chunked = chunk(props.images.edges, 3);
   let rows = chunked.map((row, index) => (
     <GalleryRow images={row} key={index} />
   ));
-  return <div>{rows}</div>;
+  return <GalleryContainer>{rows}</GalleryContainer>;
 };
 
 export default Gallery;
