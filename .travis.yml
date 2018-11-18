@@ -12,3 +12,11 @@ install:
   - npm run fetch_data
 script:
   - gatsby build
+deploy:
+  provider: pages
+  repo: $GITHUB_PAGES_REPO
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+  verbose: true
