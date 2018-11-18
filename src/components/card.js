@@ -7,27 +7,33 @@ const Avatar = styled.img`
   height: 20px;
   flex: 0 0 20px;
   margin: 0;
-  border-radius: 50%;
-`;
-const Username = styled.div`
-  margin: 0 0 0 0;
-  padding-left: 10px;
-  font-size: 20px;
-  font-family: sans-serif;
 `;
 
+const Username = styled.div`
+  margin: 0 0 0 0;
+  padding-left: 6px;
+  font-size: 16px;
+`;
+
+let StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: gray;
+  }
+`
 const UserWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
 
 const User = props => (
-  <UserWrapper>
-    <Avatar src={props.avatar} />
-    <Link to={`/artists/${props.username}`}>
+  <StyledLink to={`/artists/${props.username}`}>
+    <UserWrapper>
+      <Avatar src={props.avatar} />
       <Username>{props.name}</Username>
-    </Link>
-  </UserWrapper>
+    </UserWrapper>
+  </StyledLink>
 );
 
 const TimeAgo = styled.div`
@@ -41,7 +47,6 @@ const Header = styled.div`
   border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin-bottom: 5px;
   padding: 10px;
 `;
 
@@ -51,8 +56,8 @@ const ImageContainer = styled.div`
 
 const Footer = styled.div`
   font-size: 14px;
-  padding: 5px;
-  font-family: sans-serif;
+  font-weight: 300;
+  padding: 10px;
 `;
 
 const CardContainer = styled.div`
@@ -67,17 +72,16 @@ const prependImagePath = t => `/images/${t}`;
 
 const Tags = props => {
   let hashTags = props.tags.slice(0, 3).map((t, i) => (
-    <Link to={prependTaggedPath(t)} key={tagId(t, i)}>
+    <StyledLink to={prependTaggedPath(t)} key={tagId(t, i)}>
       {' '}
       {prependHash(t)}{' '}
-    </Link>
+    </StyledLink>
   ));
   return <div className={props.className}>{hashTags}</div>;
 };
 
 const StyledTags = styled(Tags)`
   & > a {
-    font-size: 14px;
     margin-right: 5px;
   }
 
