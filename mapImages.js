@@ -19,7 +19,7 @@ records.forEach(record => {
       image: pathTo(Artist[0], imageFromUrl(i.url)),
       title: Title,
       desc: Desc,
-      tags: split(Tags),
+      tags: split(Tags.trim()),
       date: record.createdTime,
       username: Artist[0],
       author: Artist[0],

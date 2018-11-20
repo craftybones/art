@@ -13,7 +13,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($tag: String!) {
-    images: allMergedImagesJson(filter: { tags: { in: [$tag] } }) {
+    images: allMergedImagesJson(filter: { tags: { in: [$tag] } }, sort: {fields: [date], order: DESC}) {
       edges {
         node {
           ...GalleryPosts

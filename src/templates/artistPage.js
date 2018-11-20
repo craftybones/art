@@ -13,7 +13,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($username: String!) {
-    images: allMergedImagesJson(filter: { username: { eq: $username } }) {
+    images: allMergedImagesJson(filter: { username: { eq: $username } }, sort: {fields: [date], order: DESC}) {
       edges {
         node {
           ...GalleryPosts

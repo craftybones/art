@@ -5,9 +5,14 @@ import chunk from 'lodash/chunk';
 
 const Row = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 960px;
   margin: 0 auto;
+  & > * {
+    margin-right: 27px
+  }
+  &:last-child {
+    margin-right: 0px;
+  }
 `;
 
 const GalleryRow = props => {

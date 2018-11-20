@@ -11,7 +11,7 @@ export default ({ data }) => (
 
 export const pageQuery = graphql`
   query {
-    images: allMergedImagesJson {
+    images: allMergedImagesJson(sort: {fields: [date], order: DESC}) {
       edges {
         node {
           ...GalleryPosts

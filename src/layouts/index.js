@@ -17,6 +17,8 @@ let Header = styled.header`
 `;
 
 let BodyDiv = styled.div`
+  border-top: 1px solid lightgray;
+  padding-top: 30px;
   width: 960px;
   margin: 0 auto;
 `;
@@ -26,7 +28,7 @@ export default props => {
     <div>
       <GlobalStyle/>
       <Header>
-        <a href="/">
+        <a href="/index.html">
           <FaHome />
         </a>
       </Header>

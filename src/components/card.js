@@ -64,6 +64,7 @@ const Footer = styled.div`
   font-size: 14px;
   font-weight: 300;
   padding: 10px;
+  overflow: hidden;
 `;
 
 const CardContainer = styled.div`
@@ -73,7 +74,7 @@ const CardContainer = styled.div`
 
 const prependTaggedPath = t => `/tagged/${t}`;
 const tagId = (t, i) => `${t}_${i}`;
-const prependHash = t => `#${t}`;
+const prependHash = t => t.startsWith('#')?t:`#${t}`;
 const prependImagePath = t => `/images/${t}`;
 
 const Tags = props => {
