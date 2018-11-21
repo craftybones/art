@@ -1,24 +1,27 @@
 dist: xenial
 language: node_js
 node_js:
-  - "10.2"
+- '10.2'
 sudo: enabled
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install nasm
+- sudo apt-get update
+- sudo apt-get install nasm
 install:
-  - npm install --global gatsby-cli
-  - npm install
-  - npm run fetch_data
+- npm install --global gatsby-cli
+- npm install
+- npm run fetch_data
 script:
-  - gatsby build
+- gatsby build
 deploy:
   provider: pages
-  repo: $GITHUB_PAGES_REPO
+  repo: "$GITHUB_PAGES_REPO"
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  local-dir: ./public
+  github-token: "$GITHUB_TOKEN"
+  local-dir: "./public"
   on:
     branch: master
-  target-branch: master  
+  target-branch: master
   verbose: true
+notifications:
+  slack:
+    secure: AIChvtYg1kWPVkrd25iaurw1HmMnYgB8W4RIRSObgsSfGGrvOMEv11xBSj5OGYzTZKK60QBTCDfDSe1YHdvPD5N46B9hWjPqPeKEjRHHsqI8Vcu4SAA77HlPbB3CD5Hn9qtPcXNTWVpxv8EEF4rLBVS9Q0M+Z2TJ7tii5CgwJgeI/20nQiEPMRARybAQ/6IBnX3w+7/tYqlu6Yev4eaJN61badGFzVszvtZ1WbXflXETnakcz4BeOF4u1SyC/ebcgweMhKSff4RT3me/6YBsnNEGbOa1QhNTm0WJx+bynzszO3pXHO9A/uf2iPLSUvh2zvhRDHd74LezsRdgsZZ0nSQtUEdvP1G50my8ijDYQGaBS60CdxTVpmQ26h3VfdlX6LI7gWLmmlb7CECvNMWEMXWlPqibXWFcVYJjafwKuwr3VL1KMfXaB/ICdqHbSuNT5SzVq1jrVaqLR0BaZDCwZQxkc1CHHXm1RrCd6InHB8lBsQUOdVgi15VDfYr8MpVjfZKjBbUFyYMKXV8zW9ar7pWccN1YFkjuey3PO+2Fl79IajpReE4hchwuD2AoqGA6pHW80Qt91JxHaAH5VbTlGR0Ha6KNVG+WME68O2+kS6NYSXuT0+ZqkUV907y3V9+UUE1ym44ALaUZOUzUwLRULPmts+d+yb2TaZKpPNp6h3A=

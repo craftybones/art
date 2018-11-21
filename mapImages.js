@@ -4,6 +4,7 @@ const shelljs = require('shelljs');
 
 let allImages = [];
 const split = x => x.split(/\s+/);
+const removeLeadingHashes = x => x.replace(/^#/,"");
 
 const pathTo = (artist, filename) => `../repos/${artist}/images/${filename}`;
 const spacesToUnderscore = text => text.replace(/%20/g,'_');
@@ -13,6 +14,12 @@ const imageFromUrl = url => {
   return spacesToUnderscore(parts[parts.length - 1]);
 };
 
+const toLowerCase = text => text.toLowerCase();
+
+const extractTags = tagString => {
+  return split(tagString.trim()).map(removeLeadingHashes).map(toLowerCase);
+}
+
 records.forEach(record => {
   let { Title, Desc, Image, Tags, Artist } = record.fields;
   let mapped = Image.map(i => {
@@ -20,7 +27,7 @@ records.forEach(record => {
       image: pathTo(Artist[0], imageFromUrl(i.url)),
       title: Title,
       desc: Desc,
-      tags: split(Tags.trim()),
+      tags: extractTags(Tags),
       date: record.createdTime,
       username: Artist[0],
       author: Artist[0],
