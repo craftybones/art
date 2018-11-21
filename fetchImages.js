@@ -14,7 +14,7 @@ records.forEach(record => {
     console.log('...', Artist[0], img.id, img.url);
     shelljs.mkdir('-p', path);
     shelljs.pushd(path);
-    shelljs.exec(`curl -s -O ${img.url}`);
+    shelljs.exec(`curl -s -O "${img.url}"`);
     let filename = filenameFromUrl(img.url);
     let newFilename = spacesToUnderscore(filename);
     shelljs.mv(filename,newFilename);
