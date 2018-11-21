@@ -6,10 +6,11 @@ let allImages = [];
 const split = x => x.split(/\s+/);
 
 const pathTo = (artist, filename) => `../repos/${artist}/images/${filename}`;
+const spacesToUnderscore = text => text.replace(/%20/g,'_');
 
 const imageFromUrl = url => {
   let parts = url.split(/\//);
-  return parts[parts.length - 1];
+  return spacesToUnderscore(parts[parts.length - 1]);
 };
 
 records.forEach(record => {
