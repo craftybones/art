@@ -17,6 +17,7 @@ const imageFromUrl = url => {
 const toLowerCase = text => text.toLowerCase();
 
 const extractTags = tagString => {
+  tagString=tagString || "";
   return split(tagString.trim()).map(removeLeadingHashes).map(toLowerCase);
 }
 
