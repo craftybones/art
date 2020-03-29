@@ -8,7 +8,9 @@ records.forEach(record => {
   let artistId = record.id;
   let { Avatar } = record.fields;
   Avatar.forEach(img => {
-    console.log('...', artistId, img.url);
-    shelljs.exec(`curl -s ${img.url} > avatars/${artistId}.png`);
+    if (!shelljs.test('-e', `./avatars/${artistId}.png`)) {
+      console.log('...', artistId, img.url);
+      shelljs.exec(`curl -s ${img.url} > avatars/${artistId}.png`);
+    }
   });
 });
