@@ -11,6 +11,8 @@ cache:
     - repos
     - data
     - avatars
+    - .cache
+    - build
 install:
   - npm install --global gatsby-cli
   - npm install
