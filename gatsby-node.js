@@ -18,7 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-          allMergedImagesJson(sort: {fields: [date], order: DESC}) {
+          allMergedImagesJson(sort: { fields: [date], order: DESC }) {
             group(field: tags) {
               fieldValue
             }

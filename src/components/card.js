@@ -1,45 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import StyledLink from './styledLink';
 import { Link, graphql } from 'gatsby';
 import Moment from 'react-moment';
-
-const Avatar = styled.img`
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
-  margin: 0;
-`;
-
-const Username = styled.div`
-  margin: 0 0 0 0;
-  padding-left: 6px;
-  font-size: 16px;
-`;
-
-let StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    color: gray;
-  }
-`
-const UserWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const User = props => (
-  <StyledLink to={`/artists/${props.username}`}>
-    <UserWrapper>
-      <Avatar src={props.avatar} />
-      <Username>{props.name}</Username>
-    </UserWrapper>
-  </StyledLink>
-);
+import User from './user';
 
 const TimeContainer = props => {
-  return <Moment className={props.className} fromNow>{props.time}</Moment>
-}
+  return (
+    <Moment className={props.className} fromNow>
+      {props.time}
+    </Moment>
+  );
+};
 
 const TimeAgo = styled(TimeContainer)`
   font-size: 12px;
@@ -74,7 +46,7 @@ const CardContainer = styled.div`
 
 const prependTaggedPath = t => `/tagged/${t}`;
 const tagId = (t, i) => `${t}_${i}`;
-const prependHash = t => t.startsWith('#')?t:`#${t}`;
+const prependHash = t => (t.startsWith('#') ? t : `#${t}`);
 const prependImagePath = t => `/images/${t}`;
 
 const Tags = props => {

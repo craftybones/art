@@ -8,7 +8,7 @@ const Row = styled.div`
   width: 960px;
   margin: 0 auto;
   & > * {
-    margin-right: 27px
+    margin-right: 27px;
   }
   &:last-child {
     margin-right: 0px;
@@ -16,10 +16,7 @@ const Row = styled.div`
 `;
 
 const GalleryRow = props => {
-  let cards = props.images.map(x => {
-    return <Card node={x.node} key={x.node.id} />;
-  });
-  return <Row>{cards}</Row>;
+  return <Row>{props.cards}</Row>;
 };
 
 const GalleryContainer = styled.div`
@@ -30,12 +27,12 @@ const GalleryContainer = styled.div`
   &:last-child {
     margin-bottom: 0px;
   }
-`
+`;
 
 const Gallery = props => {
-  let chunked = chunk(props.images.edges, 3);
+  let chunked = chunk(props.cards, 3);
   let rows = chunked.map((row, index) => (
-    <GalleryRow images={row} key={index} />
+    <GalleryRow cards={row} key={index} />
   ));
   return <GalleryContainer>{rows}</GalleryContainer>;
 };
