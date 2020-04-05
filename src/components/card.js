@@ -2,20 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import StyledLink from './styledLink';
 import { Link, graphql } from 'gatsby';
-import Moment from 'react-moment';
+import TimeAgo from './timeAgo';
 import User from './user';
-
-const TimeContainer = props => {
-  return (
-    <Moment className={props.className} fromNow>
-      {props.time}
-    </Moment>
-  );
-};
-
-const TimeAgo = styled(TimeContainer)`
-  font-size: 12px;
-`;
+import StyledTags from './tags';
 
 const Header = styled.div`
   display: flex;
@@ -44,29 +33,7 @@ const CardContainer = styled.div`
   border: 1px solid lightgray;
 `;
 
-const prependTaggedPath = t => `/tagged/${t}`;
-const tagId = (t, i) => `${t}_${i}`;
-const prependHash = t => (t.startsWith('#') ? t : `#${t}`);
 const prependImagePath = t => `/images/${t}`;
-
-const Tags = props => {
-  let hashTags = props.tags.slice(0, 3).map((t, i) => (
-    <StyledLink to={prependTaggedPath(t)} key={tagId(t, i)}>
-      {prependHash(t)}
-    </StyledLink>
-  ));
-  return <div className={props.className}>{hashTags}</div>;
-};
-
-const StyledTags = styled(Tags)`
-  & > a {
-    margin-right: 10px;
-  }
-
-  &:last-child {
-    margin-right: 0px;
-  }
-`;
 
 const Card = props => {
   let resize = props.node.image.childImageSharp.resize;

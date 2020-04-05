@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import TimeAgo from './timeAgo';
 import User from './user';
+import StyledTags from './tags';
 
 const Header = styled.div`
   display: flex;
@@ -39,7 +41,8 @@ const CardContainer = styled.div`
 `;
 
 export default ({ name, username, avatar, images }) => {
-  let imageContainer = images.slice(0, 4).map(({ node }) => {
+  const tags = images[0].node.tags;
+  const imageContainer = images.map(({ node }) => {
     return (
       <ImageContainer>
         <img src={node.image.childImageSharp.resize.src} />
@@ -54,9 +57,12 @@ export default ({ name, username, avatar, images }) => {
           username={username}
           name={name}
         />
+        <TimeAgo time={images[0].node.date}></TimeAgo>
       </Header>
       <ImagesContainer>{imageContainer}</ImagesContainer>
-      <Footer></Footer>
+      <Footer>
+        <StyledTags tags={tags} />
+      </Footer>
     </CardContainer>
   );
 };

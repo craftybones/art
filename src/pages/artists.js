@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../layouts/index';
 import ArtistSummary from '../components/artistSummary';
 import Gallery from '../components/gallery';
-import keyBy from 'lodash/keyBy';
+import { keyBy, takeRight } from 'lodash';
 
 export default ({ data }) => {
   const authors = data.allMergedImagesJson.group;
@@ -12,12 +12,13 @@ export default ({ data }) => {
     const name = authorsInfo[author.fieldValue].node.name;
     const username = authorsInfo[author.fieldValue].node.username;
     const avatar = author.edges[0].node.avatar;
+    const lastFourImages = takeRight(author.edges, 4).reverse();
     return (
       <ArtistSummary
         name={name}
         username={username}
         avatar={avatar}
-        images={author.edges}
+        images={lastFourImages}
       ></ArtistSummary>
     );
   });
