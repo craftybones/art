@@ -12,7 +12,7 @@ cache:
     - data
     - avatars
     - .cache
-    - build
+    - public
 install:
   - npm install --global gatsby-cli
   - npm install
