@@ -19,6 +19,7 @@ export default ({ data }) => {
         username={username}
         avatar={avatar}
         images={lastFourImages}
+        count={author.totalCount}
       ></ArtistSummary>
     );
   });
