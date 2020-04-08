@@ -7,7 +7,7 @@ const fs = require('fs');
 let allImageRecords = [];
 base('Images')
   .select({
-    maxRecords: 200,
+    maxRecords: 500,
     view: 'Grid view',
   })
   .eachPage(
